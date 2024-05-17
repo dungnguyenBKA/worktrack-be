@@ -1,0 +1,64 @@
+version: '3.3'
+services:
+    cms_app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            - DB_CONNECTION=${DB_CONNECTION}
+            - DB_HOST=${DB_HOST}
+            - DB_PORT=${DB_PORT}
+            - DB_DATABASE=${DB_DATABASE}
+            - DB_USERNAME=${DB_USERNAME}
+            - DB_PASSWORD=${DB_PASSWORD}
+        restart: unless-stopped
+        tty: true
+        volumes:
+            - ./:/var/www
+            - ./php/local.ini:/usr/local/etc/php/conf.d/local.ini
+        working_dir: /var/www
+        networks:
+            - app_network
+        depends_on:
+            - db
+    # Nginx Service
+    webserver:
+        image: nginx:alpine
+        container_name: webserver
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "6060:80"
+        volumes:
+            - ./:/var/www
+            - ./nginx/conf.d/:/etc/nginx/conf.d/
+        networks:
+            - app_network
+        depends_on:
+            - cms_app
+
+    # mySQL DB
+    db:
+        platform: linux/x86_64
+        container_name: cms_mysql_db
+        restart: unless-stopped
+        tty: true
+        ports:
+            - 3308:${DB_PORT}
+        networks:
+            - app_network
+        environment:
+            - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+            - MYSQL_DATABASE=${DB_DATABASE}
+        image: mysql:5.7
+        volumes:
+            - db_data:/var/lib/mysql/
+            - ./mysql/my.cnf:/etc/mysql/my.cnf
+#Volumes
+volumes:
+    db_data:
+
+#Docker Networks
+networks:
+    app_network:
+        driver: bridge

@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - ls -la
+  build:
+    commands:
+      - echo installing composer..        
+      - composer install
+  post_build:
+    commands:
+      - ls -la
+artifacts:
+  files:
+    - '**/*'
+  base-directory:

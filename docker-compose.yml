@@ -54,9 +54,19 @@ services:
         volumes:
             - db_data:/var/lib/mysql/
             - ./mysql/my.cnf:/etc/mysql/my.cnf
+
+    portainer:
+        image: portainer/portainer-ce:latest  # Use the latest Community Edition
+        container_name: portainer
+        restart: unless-stopped
+        ports:
+            - "9000:9000"  # Map host port 9000 to container port 9000
+        volumes:
+            - portainer_data:/data  
 #Volumes
 volumes:
     db_data:
+    portainer_data:
 
 #Docker Networks
 networks:

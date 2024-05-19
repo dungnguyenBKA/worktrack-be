@@ -45,25 +45,25 @@ class TimesheetController extends BaseController
             'from_time' => 'required|date',
             'to_time' => 'required|date',
         ]);
-//        if ($validator->fails() ||
-////            Carbon::make($request->from_time)->format('Y/m') != Carbon::make($request->to_time)->format('Y/m') ||
-//            Carbon::make($request->from_time) != Carbon::make($request->from_time)->firstOfMonth() ||
-//            Carbon::make($request->to_time) != Carbon::make($request->to_time)->lastOfMonth()
-//        ) {
-//
-//            dd(
-//                [
-//                    Carbon::make($request->from_time) != Carbon::make($request->from_time)->firstOfMonth(),
-//                    Carbon::make($request->from_time)->format('Y/m') != Carbon::make($request->to_time)->format('Y/m'),
-//                    Carbon::make($request->to_time) != Carbon::make($request->to_time)->lastOfMonth(),
-//                    Carbon::make($request->from_time)->format('Y/m/d'),
-//                    Carbon::make($request->to_time)->format('Y/m/d'),
-//                ]
-//            );
-//
-//
-//            return $this->sendError('E0001');
-//        }
+        if ($validator->fails() ||
+//            Carbon::make($request->from_time)->format('Y/m') != Carbon::make($request->to_time)->format('Y/m') ||
+            Carbon::make($request->from_time) != Carbon::make($request->from_time)->firstOfMonth() ||
+            Carbon::make($request->to_time) != Carbon::make($request->to_time)->lastOfMonth()
+        ) {
+
+            dd(
+                [
+                    Carbon::make($request->from_time) != Carbon::make($request->from_time)->firstOfMonth(),
+                    Carbon::make($request->from_time)->format('Y/m') != Carbon::make($request->to_time)->format('Y/m'),
+                    Carbon::make($request->to_time) != Carbon::make($request->to_time)->lastOfMonth(),
+                    Carbon::make($request->from_time)->format('Y/m/d'),
+                    Carbon::make($request->to_time)->format('Y/m/d'),
+                ]
+            );
+
+
+            return $this->sendError('E0001');
+        }
 
         $start_date = Carbon::parse($request->from_time)->format('Y-m-d');
         $end_date = Carbon::parse($request->to_time)->format('Y-m-d');

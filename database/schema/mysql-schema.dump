@@ -177,7 +177,7 @@ CREATE TABLE `positions` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `created_by` bigint unsigned NOT NULL,
   `user_id` bigint unsigned DEFAULT NULL,
-  `position` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL,
+  `position` varchar(255) COLLATE utf8mb3_unicode_ci NOT NULL DEFAULT '',
   `latitude` double NOT NULL,
   `longitude` double NOT NULL,
   `type` tinyint NOT NULL DEFAULT '1' COMMENT '1: office, 2: home',

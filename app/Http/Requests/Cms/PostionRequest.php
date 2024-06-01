@@ -16,12 +16,10 @@ class PostionRequest extends CmsBaseRequest
 
         $validate = [
             'user_id' => ['nullable', 'integer'],
-            'position' => ['required', 'string', 'max:255'],
-            'status' => ['required', 'integer', 'in:1,2'],
-            'type' => ['required', 'integer', 'in:1,2'],
-            'latitude' => ['required','regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
-            'longitude' => ['required','regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/']
-
+            'status' => ['required', 'numeric', 'in:1,2'],
+            'type' => ['required', 'numeric', 'in:1,2'],
+            'latitude' => ['required', 'numeric'],
+            'longitude' => ['required', 'numeric']
         ];
 
         if(\Request::instance()->type != 1) {

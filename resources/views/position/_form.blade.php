@@ -49,19 +49,20 @@
                 <i class="fas fa-map-marker-alt"></i>
             </span>
         </div>
-        <input type="text" class="form-control float-right map-input @if($errors->has('position')) is-invalid @endif"
-               name="position" id="address-input" value="{{ old('position', isset($position) ? $position->position : '') }}">
-        @if($errors->has('position'))
-            <span class="error invalid-feedback">{{ $errors->first('position') }}</span>
-        @endif
-        <input type="hidden" class="form-control float-right @if($errors->has('latitude')) is-invalid @endif"
-               name="latitude" id="address-latitude" value="{{ old('latitude', isset($position) ? $position->latitude : 0) }}"  />
-        <input type="hidden" class="form-control float-right @if($errors->has('longitude')) is-invalid @endif"
-               name="longitude" id="address-longitude" value="{{ old('longitude', isset($position) ? $position->longitude : 0) }}" />
 
-        <div id="address-map-container" style="width:100%;height:400px; ">
-            <div style="width: 100%; height: 100%" id="address-map"></div>
-        </div>
+        <input
+            class="form-control float-right"
+               placeholder="Lat"
+               name="latitude"
+               id="address-latitude"
+               value="{{ old('latitude', isset($position) ? $position->latitude : 0) }}"  />
+
+        <input
+            class="form-control float-right"
+               placeholder="Long"
+               name="longitude"
+               id="address-longitude"
+               value="{{ old('longitude', isset($position) ? $position->longitude : 0) }}" />
     </div>
 </div>
 
@@ -88,19 +89,3 @@
         </div>
     </div>
 </div>
-
-@section('script')
-    @parent
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}&libraries=places&callback=initialize" async defer></script>
-    <script src="/js/mapInput.js"></script>
-    <script>
-        $('input[type=radio][name=type]').change(function() {
-            if (this.value == '1') {
-                $('#select-staff').attr('hidden', true);
-            }
-            else if (this.value == '2') {
-                $('#select-staff').removeAttr('hidden');
-            }
-        });
-    </script>
-@endsection

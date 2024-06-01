@@ -12,14 +12,14 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('position.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('position.store') }}" >
                             @csrf
 
                             @include('position._form', ['users' => $users])
-                            
+
                             <div class="form-group row mb-0 float-right">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-primary">
+                                        <button type="submit" class="btn btn-primary">
                                         {{ __('layouts.create') }}
                                     </button>
                                     <a href="{{ route('position.index') }}" class="btn btn-dark">

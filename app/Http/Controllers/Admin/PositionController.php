@@ -44,7 +44,7 @@ class PositionController extends Controller
         $page_title = __('layouts.register_work_location');
         $users = User::getUsers();
         $this->keepBackUrl();
-
+        Log::info("Return new Create");
         return view('position.create', compact('users', 'page_title'));
     }
 

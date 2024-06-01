@@ -59,6 +59,8 @@ services:
         image: portainer/portainer-ce:latest  # Use the latest Community Edition
         container_name: portainer
         restart: unless-stopped
+        networks:
+            - app_network
         ports:
             - "9000:9000"  # Map host port 9000 to container port 9000
         volumes:

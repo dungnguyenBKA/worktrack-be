@@ -39,16 +39,6 @@ $menuItems = [
         'url' => '/position',
         'icon' => 'fa-map-marker-alt',
     ],
-    __('layouts.notification') => [
-        'admin',
-        'url' => '/notification',
-        'icon' => 'fa-envelope-open-text',
-    ],
-    __('layouts.role') => [
-        'admin',
-        'url' => '/roles',
-        'icon' => 'fa-envelope-open-text',
-    ],
     __('layouts.work_title') => [
         'admin',
         'url' => '/work-titles',

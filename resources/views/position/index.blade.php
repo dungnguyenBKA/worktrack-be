@@ -9,32 +9,7 @@
                 <a class="btn btn-primary text-nowrap" href="{{ route('position.create') }}">{{ __('layouts.register_work_location') }}</a>
                 @endroles
             </div>
-            <div class="col-md-8">
-                <form class="form-inline my-lg-0 justify-content-end" method="GET" action="{{ route('position.index') }}">
-                    @if($isAdmin)
-                        <div class="col-md-2 form-group mr-sm-2 mt-2">
-                            <select name="type" id="type" class="form-control select2 select2-hidden-accessible">
-                                <option value="" >{{ __('layouts.all_type') }}</option>
-                                @foreach(config('constants.postion_type') as $key=>$postion_type)
-                                    <option value="{{ $key }}" {{ request()->query('type') == $key ? 'selected' : '' }}>{{ $postion_type }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    @endif
-                    @if($isAdmin)
-                        <div class="col-md-3 form-group mr-sm-2 mt-2">
-                            <select name="user_id" id="user_id" class="form-control select2 select2-hidden-accessible">
-                                <option value="" >{{ __('layouts.all_user') }}</option>
-                                @foreach($users as $user)
-                                    <option value="{{ $user->id }}" {{ request()->query('user_id') == $user->id ? 'selected' : '' }}>{{ $user->getFullName() }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    @endif
-                        <input class="form-control mr-sm-2 mt-2" type="text" placeholder="{{ __('layouts.work_location') }}" aria-label="Postion" name="position" value="{{ $request->input('position') }}">
-                    <button class="btn btn-dark mt-2 btn-width-default" type="submit">{{ __('layouts.search') }}</button>
-                </form>
-            </div>
+
         </div>
         @include('layouts.alert')
         <div class="table-responsive">

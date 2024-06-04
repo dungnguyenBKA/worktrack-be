@@ -18,10 +18,6 @@
                 <td>{{ config('constants.postion_type')[$position->type] ?? "" }}</td>
             </tr>
             <tr>
-                <th>{{ __('layouts.staff') }}</th>
-                <td>{{ $position->user ? $position->user->staff_id . " " . $position->user->getFullName() : ""; }}</td>
-            </tr>
-            <tr>
                 <th>{{ __('layouts.work_location') }}</th>
                 <td>
                     {{ $position->position ?? '' }}

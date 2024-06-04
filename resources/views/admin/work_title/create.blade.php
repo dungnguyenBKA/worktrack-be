@@ -28,16 +28,6 @@
                         @enderror
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="inputStaffId" class="col-sm-2 col-form-label">{{ __('layouts.name_ja') }}</label>
-                    <div class="col-sm-10 input-group">
-                        <input class="form-control @error('name_ja') is-invalid @enderror" type="text" name="name_ja"
-                               value="{{ old('name_ja') }}" id="inputStaffId">
-                        @error('name_ja')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
 
                 <div class="d-flex justify-content-end mb-2">
                     <input class="btn btn-primary btn-width-default" type="submit" value="{{ __('layouts.create') }}">

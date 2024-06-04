@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth', 'namespace' => 'Admin'], function () {
     Route::resource('/overtimes', 'OvertimeController');
     Route::resource('/config', 'ConfigController')->middleware('admin');
     Route::resource('/notification', 'NotificationController')->middleware('admin');
-    Route::resource('/roles', 'RoleController')->middleware('admin');
+//    Route::resource('/roles', 'RoleController')->middleware('admin');
     Route::resource('/work-titles', 'WorkTitleController')->middleware('admin');
     Route::get('/timesheets', 'DashboardController@index');
     Route::get('/logout', 'AuthController@logout');

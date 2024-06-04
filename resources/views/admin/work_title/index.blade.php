@@ -16,7 +16,6 @@
                         <th>#</th>
                         <th>{{ __('layouts.name_en') }}</th>
                         <th>{{ __('layouts.name_vi') }}</th>
-                        <th>{{ __('layouts.name_ja') }}</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -31,7 +30,6 @@
                             <td>{{ ($workTitles->currentPage() - 1) * $workTitles->perPage() + $loop->iteration }}</td>
                             <td>{{ $workTitle->name_en }}</td>
                             <td>{{ $workTitle->name_vi }}</td>
-                            <td>{{ $workTitle->name_ja }}</td>
                             <td>
                                 <div class="d-flex justify-content-right">
                                     <a class="btn btn-primary py-0 px-1 mx-2" href="{{ route('work-titles.edit', $workTitle->id) }}" data-toggle="tooltip" title="{{ __('layouts.edit') }}"><i class="fas fa-pen"></i></a>

@@ -9,10 +9,6 @@
         </div>
         <table class="table table-striped table-borderless">
             <tr>
-                <th class="w-25">{{ __('layouts.position_limit') }}</th>
-                <td>{{ $config->position_limit }}</td>
-            </tr>
-            <tr>
                 <th>{{ __('layouts.distance_limit') }}</th>
                 <td>{{ $config->distance_limit }}</td>
             </tr>

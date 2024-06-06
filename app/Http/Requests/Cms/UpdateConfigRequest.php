@@ -10,7 +10,6 @@ class UpdateConfigRequest extends CmsBaseRequest
     public function rules()
     {
         return [
-            'period' => 'nullable|numeric',
             'time_of_day' => 'nullable|string',
             'day_of_week' => 'nullable|numeric',
             'over_times' => 'nullable|numeric',
@@ -28,7 +27,7 @@ class UpdateConfigRequest extends CmsBaseRequest
             'start_normal_OT' => 'required|date_format:H:i|after_or_equal:offset_time',
             'start_night_OT' => 'required|date_format:H:i|after_or_equal:start_normal_OT',
             //'end_night_OT' => 'required|date_format:H:i|after_or_equal:start_night_OT', // Note TODO: should be (start_night_OT <= end_night_OT <= 24:00) OR (0:00 <= end_night_OT <= start)
-            'end_night_OT' => ['required' ,'date_format:H:i', 
+            'end_night_OT' => ['required' ,'date_format:H:i',
             new ValidateNightOvertime(\Request::instance()->start, \Request::instance()->start_night_OT)],
         ];
     }
@@ -37,16 +36,8 @@ class UpdateConfigRequest extends CmsBaseRequest
     {
         $parameters = $this->validated();
 
-        if ($parameters['period'] == config('common.report_config.period.day')) {
-            $parameters['day_of_week'] = null;
-        }
-
         if (!array_key_exists('selected_ids', $parameters)) {
             $parameters['selected_ids'] = [];
-        }
-
-        if(isset($parameters['white_list_ips'])) {
-            $parameters['white_list_ips'] = preg_replace('/\s+/', '', $parameters['white_list_ips']);
         }
 
         $parameters['start_morning_late'] = $parameters['start'] ?

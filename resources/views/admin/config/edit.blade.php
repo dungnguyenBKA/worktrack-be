@@ -8,15 +8,6 @@
                 <table class="table table-borderless">
                     <tbody>
                     <tr>
-                        <th  class="w-25">{{ __('layouts.position_limit') }}</th>
-                        <td>
-                            <input class="form-control @error('position_limit') is-invalid @enderror" type="number" name="position_limit" min="1" max="100" value="{{ $config->position_limit }}">
-                            @error('position_limit')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </td>
-                    </tr>
-                    <tr>
                         <th>{{ __('layouts.distance_limit') }}</th>
                         <td>
                             <input class="form-control @error('distance_limit') is-invalid @enderror" type="number" name="distance_limit" min="0" value="{{ $config->distance_limit }}">

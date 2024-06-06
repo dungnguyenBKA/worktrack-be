@@ -147,55 +147,6 @@
             </div>
         </div>
 
-        @if($isAdmin)
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card rounded-lg">
-                        <div class="card-header card-title">{{ __('layouts.upload_timesheet') }}</div>
-                        <div class="card-body">
-                            <form id="upload-time-sheet" action="{{ route("timesheet.uploadTimesheet") }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group row">
-                                    <div class="col-xl-4">
-                                        <div class="custom-file @error('file-timesheet') is-invalid @enderror" style="margin-top: 0.3rem">
-                                            <input type="file" class="file-timesheet" name="file-timesheet" id="file-timesheet">
-                                            <label class="custom-file-label" for="file-timesheet">{{ __('layouts.choose_file') }}</label>
-                                        </div>
-                                        @error('file-timesheet')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-xl-2">
-                                        <div class="form-check @error('type') is-invalid @enderror">
-                                            <input class="form-check-input" id="type-0" type="radio" name="type" checked="" value="0">
-                                            <label class="form-check-label" for="type-0">{{ __('layouts.do_not_overwrite') }}</label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" id="type-1" type="radio" name="type" value="1">
-                                            <label class="form-check-label" for="type-1">{{ __('layouts.overwrite_select_best_time') }}</label>
-                                        </div>
-                                        @error('type')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <div class="col-xl-3"><button type="submit" id="btn-upload-time-sheet" class="btn btn-primary" style="margin-top: 0.3rem">{{ __('layouts.upload') }}</button></div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <a href="{{ asset('/files/Template_Import_Timesheet.xlsx') }}" download>{{ __('layouts.download_template_import') }}</a>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
-
         <div class="row">
             <div class="col-md-12">
                 <div class="card rounded-lg">
